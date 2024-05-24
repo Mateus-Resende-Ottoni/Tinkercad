@@ -34,14 +34,14 @@ void som (int luz)
     if ( luz < 5 )
     {
       if ( luz == 1)
-      { tone (Som, 235, 300); }
+      { tone (Som, 230, 160); }
       if ( luz == 2)
-      { tone (Som, 285, 325); }
+      { tone (Som, 285, 185); }
       if ( luz == 3)
-      { tone (Som, 335, 350); }
+      { tone (Som, 330, 210); }
       if ( luz == 4)
-      { tone (Som, 385, 375); }
-      delay(200);
+      { tone (Som, 385, 235); }
+      delay(150);
     }
   	else
     {
@@ -84,7 +84,7 @@ while ( game_running == false )
                
 while ( game_running == true )
 {
-  delay (100);
+  delay (50);
   // Ler sequencia ja existente
   for ( posicao_atual = 0; posicao_atual < tamanho_ordem; posicao_atual = posicao_atual + 1)
   	{
@@ -92,19 +92,19 @@ while ( game_running == true )
     digitalWrite(luz, HIGH);
     // Comando de som
     som (luz);
-    delay (500);
+    delay (400);
     digitalWrite(luz,LOW);
-    delay(500);
+    delay(400);
   	}
  
-  delay (100);
+  delay (50);
   // Definir nova inclusao na sequencia
   luz = random(1,5);
   sequencia [posicao_atual] = luz;
   digitalWrite(luz, HIGH);
   // Comando de som
   som (luz);
-  delay (500);
+  delay (400);
   digitalWrite(luz,LOW);
   tamanho_ordem = tamanho_ordem + 1;
   delay (200);
@@ -144,9 +144,9 @@ while ( game_running == true )
       chose_Azul = false;
       digitalWrite(LAzul, HIGH);
       som (1);
-      delay (400);
+      delay (280);
       digitalWrite(LAzul,LOW);
-      delay (350);
+      delay (150);
     }
     if (chose_Verde)
     {
@@ -154,9 +154,9 @@ while ( game_running == true )
       chose_Verde = false;
       digitalWrite(LVerde, HIGH);
       som (2);
-      delay (400);
+      delay (280);
       digitalWrite(LVerde,LOW);
-      delay (350);
+      delay (150);
     }
     if (chose_Vermelho)
     {
@@ -164,9 +164,9 @@ while ( game_running == true )
       chose_Vermelho = false;
       digitalWrite(LVermelho, HIGH);
       som (3);
-      delay (400);
+      delay (280);
       digitalWrite(LVermelho,LOW);
-      delay (350);
+      delay (150);
     }
     if (chose_Amarelo)
     {
@@ -174,9 +174,9 @@ while ( game_running == true )
       chose_Amarelo = false;
       digitalWrite(LAmarelo, HIGH);
       som (4);
-      delay (400);
+      delay (280);
       digitalWrite(LAmarelo,LOW);
-      delay (350);
+      delay (150);
     }
     
     // Checar diferença
@@ -199,13 +199,13 @@ while ( game_running == true )
     digitalWrite(LAmarelo, HIGH);
     for ( x = 0; x < 3; x = x + 1 )
     {som (10);
-     delay (125); }
-    delay (1500);
+     delay (100); }
+    delay (1300);
     digitalWrite(LAzul,LOW);
     digitalWrite(LVerde,LOW);
     digitalWrite(LVermelho,LOW);
     digitalWrite(LAmarelo,LOW);
-    delay(450);
+    delay(250);
     
     // Resetar
     for ( posicao_atual = 0; posicao_atual < tamanho_ordem; posicao_atual = posicao_atual + 1)
@@ -217,6 +217,7 @@ while ( game_running == true )
     game_running = false;
     sequencias_diferentes = false;
   }
+	delay (200);
 }
   
 }
