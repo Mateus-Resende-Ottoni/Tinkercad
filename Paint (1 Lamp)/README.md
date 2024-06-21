@@ -1,4 +1,4 @@
-<h1><a href="#" target="_blank">Link do projeto no Tinkercad: (Indisponível)</a></h1>
+<h1><a href="https://www.tinkercad.com/things/7GmY1oSAti3-paint-1-lamp" target="_blank">Link do projeto no Tinkercad: (Indisponível publicamente)</a></h1>
 
 <h2 style="color:purple">Como funciona o projeto:</h2>
 <p>Após iniciar o projeto, clique no teclado para definir qual cor do padrão RGB deseja customizar:</p>
