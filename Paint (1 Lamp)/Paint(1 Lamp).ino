@@ -8,11 +8,10 @@
 const int Verde = 10;
 const int Azul = 11;
 const int Vermelho = 12;
-const int EmEscolha = 13;
 
 
-const byte linhas_teclado= 4; //number of rows on the keypad
-const byte colunas_teclado= 4; //number of columns on the keypad
+const byte linhas_teclado= 4; // Linhas no keypad
+const byte colunas_teclado= 4; // Colunas no keypad
 
 int N1 = 0, N2 = 0, N3 = 0, N_Total = 0;
 int cor = 0;
@@ -29,11 +28,11 @@ char Teclas[linhas_teclado][colunas_teclado]=
 {'*', '0', '#', 'D'}
 };
 
-//Code that shows the the keypad connections to the arduino terminals
+// Conexões ao keypad
 byte linhas[linhas_teclado] = {9,8,7,6}; //Rows 0 to 3
 byte colunas[colunas_teclado]= {5,4,3,2}; //Columns 0 to 3
 
-//initializes an instance of the Keypad class
+// Inicialização do keypad
 Keypad meuTeclado = Keypad (makeKeymap(Teclas), linhas, colunas, linhas_teclado, colunas_teclado);
 
 void setup()
@@ -43,17 +42,14 @@ pinMode(Azul, OUTPUT);
 pinMode(Vermelho, OUTPUT);
 }
 
-//If key is pressed, this key is stored in 'keypressed' variable
-//If key is not equal to 'NO_KEY', then this key is printed out
-//if count=17, then count is reset back to 0 (this means no key is pressed during the whole keypad scan process
 void loop()
 {
+// Definir luz da lâmpada
   analogWrite( Vermelho, n_vermelho );
   analogWrite( Verde, n_verde );
   analogWrite( Azul, n_azul );
 
-  digitalWrite ( EmEscolha, LOW );
-  
+// Reconhecer qual cor alterar
   while ( selecionada_cor == false )
   {
 	botao = meuTeclado.getKey();
@@ -75,8 +71,8 @@ void loop()
     }
   }
   selecionada_cor = false;
-  digitalWrite ( EmEscolha, HIGH );
-  
+
+// Reconhecer valor da centena
   while ( n_selecionado == false )
   {
     botao = meuTeclado.getKey();
@@ -91,6 +87,7 @@ void loop()
   }
   n_selecionado = false;
 
+// Reconhecer valor da dezena
   while ( n_selecionado == false )
   {
     botao = meuTeclado.getKey();
@@ -104,7 +101,8 @@ void loop()
     }
   }
   n_selecionado = false;
-  
+
+// Reconhecer valor da unidade
   while ( n_selecionado == false )
   {
     botao = meuTeclado.getKey();
@@ -119,9 +117,12 @@ void loop()
   }
   n_selecionado = false;
 
+// Calcular valor total
   N_Total = (N1 * 100) + (N2 * 10) + (N3);
+// Redefinir se ultrapassar o máximo
   if ( N_Total > 255 ) { N_Total = 255; }
   
+// Aplicar valor a cor selecionada
   if ( cor == Vermelho ) { n_vermelho = N_Total;  }
   if ( cor == Verde ) { n_verde = N_Total; }
   if ( cor == Azul ) { n_azul = N_Total; }
